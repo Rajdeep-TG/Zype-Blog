@@ -1,9 +1,15 @@
-module.exports = ({ env }) => ({
-  host: env('HOST', '0.0.0.0'),
-  port: env.int('PORT', 1337),
-  admin: {
-    auth: {
-      secret: env('ADMIN_JWT_SECRET', 'ea1b241e673fa9c054f5d5d69d4649f9'),
-    },
+{
+  "host": "${process.env.HOST || '0.0.0.0'}",
+  "port": "${process.env.PORT || 1337}",
+  "production": true,
+  "proxy": {
+    "enabled": false
   },
-});
+  "cron": {
+    "enabled": false
+  },
+  "admin": {
+    "path": "/dashboard",
+    "autoOpen": false
+  }
+}
